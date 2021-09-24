@@ -1,11 +1,6 @@
 import "./App.css";
 import React, { Fragment } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navigation.js";
 import Login from "./components/Login.js";

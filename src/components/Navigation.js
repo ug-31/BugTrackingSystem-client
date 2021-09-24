@@ -1,21 +1,39 @@
 import React, { Fragment } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
 
 const Navigation = () => {
   return (
     <Fragment>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="/dashboard">Dashboard</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/register">Register</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a className="navbar-brand" href="/dashboard">
+          Dashboard
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item active">
+              <a className="nav-link" href="/login">
+                Login <span className="sr-only">(current)</span>
+              </a>
+            </li>
+            <li className="nav-item active">
+              <a className="nav-link" href="/register">
+                Register
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </Fragment>
   );
 };
