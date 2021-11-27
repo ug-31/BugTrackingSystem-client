@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./form.css";
 
+import { toast } from "react-toastify";
 const Login = () => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -23,7 +24,13 @@ const Login = () => {
 
       const parseRes = await response.json();
 
-      console.log(parseRes);
+      if (parseRes.token) {
+        localStorage.setItem("token", parseRes.token);
+
+        toast.success("Login Successful");
+      } else {
+        toast.error(parseRes);
+      }
     } catch (err) {
       console.error(err.message);
     }
