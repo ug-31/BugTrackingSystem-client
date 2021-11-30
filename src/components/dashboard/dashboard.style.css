@@ -1,0 +1,50 @@
+h3 {
+  text-align: center;
+}
+h5 {
+  text-align: center;
+}
+
+.dashbutton {
+  border-radius: 4px;
+  background-color: #3e97eb;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  padding: 16px;
+  width: 220px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 36px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+}
+
+.dashbutton {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.dashbutton:after {
+  content: ">>";
+  position: absolute;
+  opacity: 0;
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+.dashbutton:hover {
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
+.dashbutton:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+
+div {
+  text-align: center;
+}

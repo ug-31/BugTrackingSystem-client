@@ -1,14 +1,30 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import "./form.css";
+
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setAuth, setUser } from "../../auth/authSlice";
 
 import { toast } from "react-toastify";
 
 const Register = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: "",
   });
+
+  useEffect(
+    (props) => {
+      if (isAuthenticated) {
+        history.push("/dashboard");
+      }
+    },
+    [isAuthenticated]
+  );
 
   const handleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -28,6 +44,9 @@ const Register = () => {
 
       if (parseRes.token) {
         localStorage.setItem("token", parseRes.token);
+        dispatch(setUser({ username: inputs.email, token: parseRes.token }));
+        dispatch(setAuth({ isAuthenticated: true }));
+        history.push("/dashboard");
         toast.success("Register Successful");
       } else {
         toast.error(parseRes);
